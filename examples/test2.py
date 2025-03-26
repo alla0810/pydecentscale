@@ -1,13 +1,22 @@
 from pydecentscale import DecentScale
 import asyncio
+from bleak import BleakClient
 
 async def main():
     # Create the DecentScale object
     ds = DecentScale()
 
+    print("DecentScale object created!")
+    print(f"DecentScale address: {ds.address}")
+    print(f"Is DecentScale connected: {ds.connected}")
+    print(f"Current weight (if available): {ds.weight}")    
+
     # Disconnect any existing connections if there are any
     print("Disconnecting existing connection...")
-    ds.disconnect()  # 
+    async with BleakClient(ds.address) as client:
+        if client.is_connected:
+            print("Disconnecting existing connection with BleakClient...")
+            await client.disconnect()
 
     # Now, scan and connect to the first available decent scale
     print("Scanning for Decent Scale...")
