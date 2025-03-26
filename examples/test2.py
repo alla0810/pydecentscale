@@ -5,7 +5,12 @@ async def main():
     # Create the DecentScale object
     ds = DecentScale()
 
-    # Scan and connect to the first available decent scale
+    # Disconnect any existing connections if there are any
+    if ds.is_connected():
+        print("Disconnecting existing connection...")
+        await ds.disconnect()
+
+    # Now, scan and connect to the first available decent scale
     print("Scanning for Decent Scale...")
     await ds.auto_connect()
 
@@ -19,7 +24,6 @@ async def main():
     # Continuously read weight
     print('Reading values...')
     for i in range(50):
-        # Continuously check if weight is available
         if ds.weight is not None:
             print(f"Current weight: {ds.weight:.1f} kg")
             break
