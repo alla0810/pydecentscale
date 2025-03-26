@@ -6,13 +6,12 @@ async def main():
     ds = DecentScale()
 
     # Disconnect any existing connections if there are any
-    if ds.connected:
-        print("Disconnecting existing connection...")
-        await ds.disconnect()
+    print("Disconnecting existing connection...")
+    ds.disconnect()  # 
 
     # Now, scan and connect to the first available decent scale
     print("Scanning for Decent Scale...")
-    await ds.auto_connect()
+    ds.auto_connect()  # 
 
     print(f"Found Decent Scale: {ds.address}")
     print("Scale connected!")
