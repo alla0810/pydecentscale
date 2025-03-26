@@ -1,0 +1,37 @@
+from pydecentscale import DecentScale
+import asyncio
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+async def main():
+    # Create the DecentScale object
+    ds = DecentScale()
+
+    # Scan and connect to the first available decent scale
+    print("Scanning for Decent Scale...")
+    await ds.auto_connect()
+
+    print(f"Found Decent Scale: {ds.address}")
+    print("Scale connected!")
+
+    # Enable notifications
+    print("Enabling notifications...")
+    await ds.enable_notification()
+
+    # Continuously read weight
+    print('Reading values...')
+    for i in range(50):
+        # Continuously check if weight is available
+        if ds.weight is not None:
+            print(f"Current weight: {ds.weight:.1f} kg")
+            break
+        await asyncio.sleep(0.1)
+
+    # Disconnect after reading the value
+    print("Disconnecting...")
+    await ds.disconnect()
+
+    print("All done. Ciao!")
+
+# Run the async main function
+asyncio.run(main())
