@@ -1,7 +1,5 @@
 from pydecentscale import DecentScale
 import asyncio
-import logging
-logging.basicConfig(level=logging.DEBUG)
 
 async def main():
     # Create the DecentScale object
