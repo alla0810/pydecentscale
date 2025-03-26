@@ -6,7 +6,7 @@ async def main():
     ds = DecentScale()
 
     # Disconnect any existing connections if there are any
-    if ds.is_connected():
+    if ds.connected:
         print("Disconnecting existing connection...")
         await ds.disconnect()
 
