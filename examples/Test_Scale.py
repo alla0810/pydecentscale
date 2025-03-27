@@ -71,66 +71,66 @@ for i in range(50):
 
 
 #Turn the led display off
-ds.led_off()
-time.sleep(1)
+#ds.led_off()
+#time.sleep(1)
 
 
 # In[9]:
 
 
 #Let's turn it back on so we can see the timer
-ds.led_on()
-time.sleep(1)
+#ds.led_on()
+#time.sleep(1)
 
 
 # In[10]:
 
 
-print('Testing tare fuction...')
+#print('Testing tare fuction...')
 #Tare the scale
-ds.tare()
-time.sleep(1)
+#ds.tare()
+#time.sleep(1)
 
 
 # In[11]:
 
 
-print('Testing timer...')
+#print('Testing timer...')
 #Start the timer
-ds.start_time()
-time.sleep(5)
+#ds.start_time()
+#time.sleep(5)
 
 
 # In[12]:
 
 
 #Stop the timer
-ds.stop_time()
-time.sleep(1)
+#ds.stop_time()
+#time.sleep(1)
 
 
 # In[13]:
 
 
 #Reset the timer
-ds.reset_time()
-time.sleep(1)
+#ds.reset_time()
+#time.sleep(1)
 
 
 # In[14]:
 
 
 #This disable the BLE notifications for reading the weight
-ds.disable_notification()
-time.sleep(1)
+#ds.disable_notification()
+#time.sleep(1)
 
 
 # In[15]:
 
 
-print('Disconnecting...')
+#print('Disconnecting...')
 #Finally we can disconnect
-ds.disconnect()
+#ds.disconnect()
 
 
 # In[16]:

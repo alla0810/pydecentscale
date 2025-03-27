@@ -186,6 +186,7 @@ class DecentScale(AsyncioEventLoopThread):
             logger.warning(f"Unknown Notification Type received: 0x{type_:02x}")
 
     async def _enable_notification(self):
+        print("_enable_notification")        
         await self.client.start_notify(self.CHAR_READ, self.notification_handler)
         await asyncio.sleep(1)
         
