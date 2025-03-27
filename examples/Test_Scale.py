@@ -36,11 +36,19 @@ print('Weight value without notification enabled is:', ds.weight)
 
 # In[5]:
 
+print('Testing led display...')
+
+#Turn the led display on
+ds.led_on()
+time.sleep(1)
+
+
+
 
 #To read the current weight we need to first enable the BLE notifications
 print('Enabling notifications...')
 ds.enable_notification()
-time.sleep(1)
+time.sleep(5)
 
 
 # In[6]:
@@ -57,11 +65,6 @@ for i in range(50):
 # In[7]:
 
 
-print('Testing led display...')
-
-#Turn the led display on
-ds.led_on()
-time.sleep(1)
 
 
 # In[8]:
