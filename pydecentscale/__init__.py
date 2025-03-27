@@ -147,6 +147,7 @@ class DecentScale(AsyncioEventLoopThread):
         if data[0] != 0x03 or len(data) != 7:
             # Basic sanity check
             logger.info("Invalid notification: not a Decent Scale?")
+            print('Invalid notification: not a Decent Scale?')
             return
 
         # Calculate XOR
