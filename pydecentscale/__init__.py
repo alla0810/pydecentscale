@@ -49,6 +49,7 @@ class DecentScale(AsyncioEventLoopThread):
     def __init__(self, *args, timeout=20, fix_dropped_command=True, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.address = "FF:22:07:21:50:4E"
         self.client = None
         self.timeout=timeout
         self.connected=False
@@ -61,7 +62,8 @@ class DecentScale(AsyncioEventLoopThread):
         self.CHAR_READ='0000FFF4-0000-1000-8000-00805F9B34FB'
         self.CHAR_WRITE='000036f5-0000-1000-8000-00805f9b34fb'
         
-        
+
+
         #Tare the scale by sending "030FFD000000F1". 
         #Each tare needs to increment the 3rd byte pair, 
         #so you can cycle (for instance) though "030FFE000000F2" "030FFF000000F3" "030F000000000C".
@@ -77,6 +79,8 @@ class DecentScale(AsyncioEventLoopThread):
         
         self.daemon=True
         super().start()
+
+        print(f"Initialized DecentScale with address: {self.address}")        
         
     def check_connection(func):
         def is_connected(self):
@@ -228,19 +232,17 @@ class DecentScale(AsyncioEventLoopThread):
         return not self.connected
             
     def auto_connect(self,n_retries=3):    
-        address = None
-
         for i in range(n_retries):
-            address=self.find_address()
-            if address:
-                print('Found Decent Scale: %s' % address)
+            self.address=self.find_address()
+            if self.address:
+                print('Found Decent Scale: %s' % self.address)
                 break
             else:
                 print(i)
         
-        if address:        
+        if self.address:        
             for i in range(n_retries):
-                if self.connect(address):
+                if self.connect(self.address):
                     print('Scale connected!')
                     return True
                 
