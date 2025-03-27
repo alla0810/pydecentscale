@@ -19,6 +19,8 @@ ds=DecentScale()
 # In[3]:
 
 
+
+
 #Scan and connect to the first available decent scale
 ds.auto_connect()
 
