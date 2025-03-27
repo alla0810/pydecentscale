@@ -18,6 +18,7 @@ import sys
 from bleak import BleakScanner, BleakClient
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 class AsyncioEventLoopThread(threading.Thread):
